@@ -10,11 +10,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Serve static files from portfolio directory
-app.use(express.static(path.join(__dirname, 'portfolio')));
+// Serve static files from current directory (since server.js is in portfolio folder)
+app.use(express.static(path.join(__dirname)));
 
-// Serve images
-app.use('/images', express.static(path.join(__dirname, 'portfolio', 'images')));
+// Serve images from images folder in current directory
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Contact form endpoint
 app.post('/api/contact', async (req, res) => {
@@ -25,7 +25,7 @@ app.post('/api/contact', async (req, res) => {
       return res.status(400).json({ error: 'All fields are required' });
     }
     
-    const transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransporter({
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
@@ -57,9 +57,9 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// Serve HTML file - SIMPLIFIED ROUTE HANDLING
+// Serve HTML file from current directory
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'portfolio', 'mutambo_portfolio.html'));
+  res.sendFile(path.join(__dirname, 'mutambo_portfolio.html'));
 });
 
 // Handle other routes
