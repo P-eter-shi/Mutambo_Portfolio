@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 
@@ -34,7 +35,8 @@ app.post('/api/contact', async (req, res) => {
     });
     
     const mailOptions = {
-      from: email,
+      from: process.env.EMAIL_USER, // Use your email as sender
+      replyTo: email, // User's email for replies
       to: process.env.EMAIL_USER,
       subject: `New message from ${name} (Portfolio Contact)`,
       text: message,
@@ -57,9 +59,18 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// Serve HTML file from current directory
+// Serve HTML file from current directory with better error handling
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'mutambo_portfolio.html'));
+  const htmlPath = path.join(__dirname, 'mutambo_portfolio.html');
+  
+  // Check if file exists before serving
+  if (fs.existsSync(htmlPath)) {
+    res.sendFile(htmlPath);
+  } else {
+    console.error('HTML file not found at:', htmlPath);
+    console.log('Current directory contents:', fs.readdirSync(__dirname));
+    res.status(404).send('Portfolio file not found');
+  }
 });
 
 // Handle other routes
@@ -68,4 +79,8 @@ app.get('*', (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  console.log('Current working directory:', process.cwd());
+  console.log('Server file directory:', __dirname);
+});

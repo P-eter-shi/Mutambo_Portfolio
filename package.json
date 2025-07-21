@@ -2,7 +2,7 @@
   "name": "wanja_portfolio",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "portfolio/server.js",
   "scripts": {
     "start": "node portfolio/server.js",
     "dev": "nodemon portfolio/server.js",
