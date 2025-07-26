@@ -28,6 +28,24 @@ window.addEventListener('scroll', function() {
     header.classList.toggle('sticky', window.scrollY > 0);
 });
 
+// Video placeholder click handler
+        const videoPlaceholder = document.querySelector('.video-placeholder');
+        const playButton = document.querySelector('.play-button');
+
+        videoPlaceholder.addEventListener('click', function() {
+            // Add a subtle animation when clicked
+            playButton.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                playButton.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    playButton.style.transform = 'scale(1)';
+                }, 150);
+            }, 150);
+            
+            // Here you would typically replace the placeholder with an actual video
+            console.log('Video placeholder clicked - replace with actual video');
+        });
+
 // Scroll to Top Button
 const scrollTopBtn = document.querySelector('.scroll-top');
 
