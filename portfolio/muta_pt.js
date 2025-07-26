@@ -42,9 +42,33 @@ window.addEventListener('scroll', function() {
                 }, 150);
             }, 150);
             
-            // Here you would typically replace the placeholder with an actual video
-            console.log('Video placeholder clicked - replace with actual video');
-        });
+             // Google Drive Video - Replace with your actual Google Drive link
+    const videoUrl = 'YOUR_ACTUAL_GOOGLE_DRIVE_LINK_HERE';
+    replaceWithGoogleDriveVideo(videoUrl);
+});
+
+// Function to replace placeholder with Google Drive video
+function replaceWithGoogleDriveVideo(driveUrl) {
+    // Extract file ID from Google Drive URL
+    const fileId = extractGoogleDriveFileId(driveUrl);
+    if (!fileId) {
+        alert('Invalid Google Drive URL. Please check the link.');
+        return;
+    }
+    
+    const container = document.querySelector('.video-container');
+    container.innerHTML = `
+        <iframe 
+            src="https://drive.google.com/file/d/${fileId}/preview" 
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            allow="autoplay" 
+            allowfullscreen
+            style="aspect-ratio: 16/9;">
+        </iframe>
+    `;
+}
 
 // Scroll to Top Button
 const scrollTopBtn = document.querySelector('.scroll-top');
