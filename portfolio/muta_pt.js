@@ -43,7 +43,7 @@ window.addEventListener('scroll', function() {
             }, 150);
             
              // Google Drive Video - Replace with your actual Google Drive link
-    const videoUrl = 'YOUR_ACTUAL_GOOGLE_DRIVE_LINK_HERE';
+    const videoUrl = 'https://drive.google.com/file/d/1Ue9ow40EHAr25QD_Lp3Ff0-ED7gFPAV6/view?usp=sharing';
     replaceWithGoogleDriveVideo(videoUrl);
 });
 
@@ -59,7 +59,7 @@ function replaceWithGoogleDriveVideo(driveUrl) {
     const container = document.querySelector('.video-container');
     container.innerHTML = `
         <iframe 
-            src="https://drive.google.com/file/d/${fileId}/preview" 
+            src="https://drive.google.com/file/d/1Ue9ow40EHAr25QD_Lp3Ff0-ED7gFPAV6/view?usp=sharing"  
             width="100%" 
             height="100%" 
             frameborder="0" 
