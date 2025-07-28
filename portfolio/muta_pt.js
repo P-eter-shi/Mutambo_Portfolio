@@ -47,7 +47,7 @@ if (videoPlaceholder && playButton) {
         }, 150);
         
         // Google Drive Video 
-        const videoUrl = 'https://drive.google.com/file/d/1Ue9ow40EHAr25QD_Lp3Ff0-ED7gFPAV6/view?usp=sharing';
+        const videoUrl = 'https://drive.google.com/file/d/18p64NrKNYi1atBgN89C5KUS7YQOJ0nyX/view?usp=sharing';
         replaceWithGoogleDriveVideo(videoUrl);
     });
 }
