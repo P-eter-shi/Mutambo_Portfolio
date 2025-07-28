@@ -178,8 +178,8 @@ if (contactForm) {
         try {
             // Send email using EmailJS
             const result = await emailjs.send(
-                'service_izd76ek',        // Replace with your EmailJS service ID
-                'template_zeksqom',       // Replace with your EmailJS template ID
+                'service_izd76ek',        // Email service ID
+                'template_zeksqom',       // EmailJS template ID
                 {
                     from_name: name,
                     from_email: email,
@@ -187,7 +187,7 @@ if (contactForm) {
                     to_email: 'pwanjala404@gmail.com',
                     reply_to: email
                 },
-                'nNI2qdzoeGGO39pLt'         // Replace with your EmailJS public key
+                'nNI2qdzoeGGO39pLt'         // EmailJS public key
             );
             
             if (result.status === 200) {
